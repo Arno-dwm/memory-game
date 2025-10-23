@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Memory Game</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header>
+      <h1>ENI - Memory - Inscription</h1>
+    <!-- Menu navigation -->
+      <nav>
+        <a href="./index.html">Accueil</a>
+        <a href="./inscription.html">S'inscrire</a>
+        <a href="./connexion.html">Se connecter</a>
+        <a href="./profil.html">Profil</a>
+        <a href="./jeu.html">Jouer</a>
+      </nav>
+    </header>
+    <main>
+        <section>
+          <form action="" method="post">
+            <fieldset>
+                <legend>Inscrivez-vous</legend>
+                <div class="responsive-form">
+                    <label for="login"><p>Nom d'utilisateur :</p>
+                      <input type="text" id="login" name="login" minlength="3" placeholder="3 caractères minimum">
+                      <img src="/ressources/error.png" alt="Icone de validation">
+                      <p class="petitTexte alerte">Choisissez un nom contenant au moins 3 caractères</p>
+                    </label>
+                    
+                    <label for="mail"><p>Entrez votre email</p>
+
+                      <input type="email" id="email" pattern=".+@example\.com" size="30" required placeholder="Votre email"/>
+                      <img src="/ressources/error.png" alt="Icone de validation">
+                      <p class="petitTexte alerte">Rentrez un email valide</p>
+                    </label>
+                    
+                    <label for="mdp"><p>Mot de passe*</p>
+                      <input type="password" id="mdp" name="mdp" minlength="6" required title="Saisir votre mot de passe" placeholder="Votre mot de passe">
+                      <p class="petitTexte">Au moins un symbole, un chiffre, ainsi que 6 caractères minimum</p>
+                    </label>
+                    <label for="verifMdp"><p>Confirmez le mot de passe</p>
+                      <input type="password" id="verifMdp" name="verifMdp" required pattern="[A-Za-z][0-9]{8,}" title="Répéter votre mot de passe" placeholder="Confirmez le mot de passe">
+                      <div class="petitTexte" id="divVerifmdp">
+                        <input type="checkbox" id="checkMdp">Montrer mot de passe
+                      </div>
+                      
+
+                    </label>
+
+                </div>        
+                <button id="btnCreate">Création du compte</button>
+                <button id="btnAnnul">Annuler</button>
+            </fieldset>
+          </form>
+        </section>
+    </main>
+    <script type="module" src="js/form.js"></script>
+</body>
+</html>

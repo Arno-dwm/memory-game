@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Memory Game</title>
+        <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header>
+      <h1>ENI - Memory - Connexion</h1>
+    <!-- Menu navigation -->
+      <nav>
+        <a href="./index.html">Accueil</a>
+        <a href="./inscription.html">S'inscrire</a>
+        <a href="./connexion.html">Se connecter</a>
+        <a href="./profil.html">Profil</a>
+        <a href="./jeu.html">Jouer</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <form action="" method="post">
+            <fieldset>
+                <legend>Connectez-vous</legend>
+                <div class="responsive-form">
+
+                   
+                  <label for="mail">Entrez votre email</label>
+                  <input type="email" id="email" pattern=".+@example\.com" size="30" required placeholder="Votre email"/>
+                    <label for="mdp"><p>Mot de passe*</p>
+                      <input type="password" id="mdp" name="mdp" required pattern="[A-Za-z][0-9]{8,}" title="Saisir votre mot de passe" placeholder="Votre mot de passe">
+
+                    </label>
+                    
+                   
+                </div>        
+                <button>Se connecter</button>
+                <button>Annuler</button>
+            </fieldset>
+          </form>
+      </section>
+    </main>
+</body>
+</html>

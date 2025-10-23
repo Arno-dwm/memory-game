@@ -1,0 +1,7 @@
+{
+    "users": [
+        {"nom": "Jane", "age": 33, "ville": "Lorient"},
+        {"nom": "John", "age": 21, "ville": "Cassis"},
+        {"nom": "Dom", "age": 44, "ville": "Dunkerque"}
+    ]
+}
