@@ -22,88 +22,26 @@
         <section id="infos">
           <h2>Tableau des scores</h2>
           <p>Tentez de gagner avec le moins d'essais possibles. <br>
-            Appuyez sur la barre d'espace pour relancer le jeu.
+            Appuyez sur la <strong>barre d'espace</strong> pour relancer le jeu.
           </p>
           <p>Nombre de coups : <span id="nombreCoups"></span></p>
+          <p>Meilleur essai : <span id="meilleurEssai"></span></p>
+          <label for="selectionImg">Choisir votre grille</label>
+          <select name="selectionImg">
+            <option>Pokemon</option>
+            <option>Métal</option>
+          </select>
+          <div id="overlay">
+            <div id="texteOverlay">
+              <p>C'est gagné !</p>
+              <p id="miniTexte">Cliquer pour relancer</p>
+            </div>
+          </div>
         </section>
-        <section id="grilleJeu">
-            <!-- div.case#case$>img[src="ressources/pkmn/ball.png" alt="case"]*11 -->
-            <div id="case1" class="case">
-              <div class="inner">
-                <div class="recto"></div>
-                <div class="verso"></div>
-                </div>
-            </div>
-
-
-            <div id="case2" class="case">
-                <div class="inner">
-                <div class="recto"></div>
-                <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case3" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case4" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case5"class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case6" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case7" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case8" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case9" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case10" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case11" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
-            <div id="case12" class="case">
-                <div class="inner">
-                  <div class="recto"></div>
-                  <div class="verso"></div>
-               </div>
-            </div>
+        <section id="grilleJeuFly">
 
         </section>
+       
     </main>
     <script type="module" src="js/app.js"></script>
 </body>
