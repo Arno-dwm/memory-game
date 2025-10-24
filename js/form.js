@@ -25,6 +25,8 @@ checkMdp.addEventListener("click", afficheMdp);
 
 $champConfirmMdp.addEventListener("input", confirmerMatchMdp);
 $login.addEventListener("input", lectureInput);
+$champMdp.addEventListener("input", confirmerMdp);
+$email.addEventListener("input", validerEmail);
 
 //fonction globale au clic sur "Création du compte" vérifiant les différents champs
 function verifier(e){
@@ -35,12 +37,15 @@ function verifier(e){
 
     //si tous les champ sont remplis, lancer la vérification des champs non écoutés
     if (login && email && motDePasse && validMdp) {
-        confirmerMdp();
-        emailOk = validerEmail($email); // true ou false
+        
+        //validerEmail($email); // true ou false
         console.log("Email", emailOk, "Login", loginOk, "mdp", mdpOk, mdpMatch);
         
         //SI nom, mail, mdp et mdpMatch OK alors Créer le compte
         if (loginOk && mdpOk && mdpMatch && emailOk){
+          //verifier si le mail et login sont existants
+
+          //créer le compte
           creerCompte(login, email, motDePasse);
         }
     }
@@ -51,13 +56,28 @@ function verifier(e){
 
 
 //vérifier taille et contenu du mdp
-function confirmerMdp(){
-  if ($champMdp.length < 6) {
-    console.log("Mot de passe trop court, 6 caractère minimum");
-    mdpOk = false;
-  } else {
+function confirmerMdp(e){
+  
+  let saisieMdp = e.target.value;
+  let carac = false;
+  let num = false;
+  let regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/
+
+  if (regExp.test(saisieMdp)) {
+
+    toggleVerification($champMdp, "vrai");
+    
     mdpOk = true;
+    carac = true;
+    num = true;
+  } else {
+    toggleVerification($champMdp, "faux");
+    mdpOk = false;
+    carac = false;
+    num = false;
+
   }
+
     
 }
 
@@ -67,10 +87,10 @@ function confirmerMatchMdp(e){
     let $mdpConfirme = document.getElementById("verifMdp").value;
 
     if ($mdp == $mdpConfirme) {
-        e.target.style.borderColor = "green";
+        e.target.style.borderColor = "#419EAE";
         mdpMatch = true;
     } else {
-        e.target.style.borderColor = "red";
+        e.target.style.borderColor = "#F2684A";
         mdpMatch = false;
     }
 
@@ -78,9 +98,19 @@ function confirmerMatchMdp(e){
 }
 
 //Validation du format mail avec expression régulières A EXPLICITER
-function validerEmail(email) {
+function validerEmail() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email.value);
+  if (emailRegex.test($email.value)){
+      console.log("dans email valide");
+      
+        toggleVerification($email, "vrai")
+        emailOk = true;
+  }
+  else {
+        toggleVerification($email, "faux")
+        emailOk = false;
+  }
+
 }
 
 
@@ -88,11 +118,11 @@ function lectureInput(e){
 
     let saisie = e.target.value;
     if(saisie.length < 3){
-        toggleVerification(login, "faux")
+        toggleVerification($login, "faux")
         loginOk = false;
 
     } else {
-        toggleVerification(login, "vrai")
+        toggleVerification($login, "vrai")
         loginOk = true;
 
     }
@@ -106,6 +136,7 @@ function toggleVerification(element, condition){
         element.nextElementSibling.setAttribute("src", "/ressources/error.png");
       break;
     case "vrai" : element.style.borderColor = "#419EAE";
+    element.nextElementSibling.style.visibility = "visible";
         element.nextElementSibling.setAttribute("src", "/ressources/check.png");
         element.nextElementSibling.nextElementSibling.style.visibility = "hidden";
       break;

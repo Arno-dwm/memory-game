@@ -19,7 +19,7 @@ const $afficheMeilleur = document.getElementById("meilleurEssai");
 const $overlay = document.getElementById("overlay");
 
 
-//ecoute pour relanccer le jeu
+//ecoute globale pour relancer le jeu avec SPACE
 document.addEventListener('keydown', function(e){
     if(e.key == " "){
         //Recharger la page : globalThis.location.reload();
@@ -28,34 +28,34 @@ document.addEventListener('keydown', function(e){
 
 });
 
-    //duplication du tableau pour crééer les paires
-    let gameGrid = pokemonTab.concat(pokemonTab)
-    
-    //création des éléments HTML + association du tableau d'img 
-    for (let carte of gameGrid) {
-        const sectionJeu = document.getElementById('grilleJeuFly')
-        const caseJeu = document.createElement('div');
-        const innerCase = document.createElement('div');
-        const rectoCase = document.createElement('div');
-        const versoCase = document.createElement('div');
+//duplication du tableau pour crééer les paires
+let gameGrid = pokemonTab.concat(pokemonTab)
 
-        caseJeu.classList.add('case');
-        innerCase.classList.add('inner');
-        rectoCase.classList.add('recto');
-        versoCase.classList.add('verso');
+//création des éléments HTML + association du tableau d'img via donnees.js
+for (let carte of gameGrid) {
+    const sectionJeu = document.getElementById('grilleJeuFly')
+    const caseJeu = document.createElement('div');
+    const innerCase = document.createElement('div');
+    const rectoCase = document.createElement('div');
+    const versoCase = document.createElement('div');
 
-        versoCase.style.backgroundImage = `url(${carte.img})`
-        rectoCase.style.backgroundImage = `url(${carte.defaut})`
+    caseJeu.classList.add('case');
+    innerCase.classList.add('inner');
+    rectoCase.classList.add('recto');
+    versoCase.classList.add('verso');
 
-        innerCase.appendChild(rectoCase);
-        innerCase.appendChild(versoCase);
-        caseJeu.appendChild(innerCase);        
-        sectionJeu.appendChild(caseJeu);
-    }
+    versoCase.style.backgroundImage = `url(${carte.img})`
+    rectoCase.style.backgroundImage = `url(${carte.defaut})`
 
-    //déclaration des variables éléments post-création
-    const $caseClic = document.querySelectorAll(".inner");
-    const $mesCases = document.querySelectorAll(".case");
+    innerCase.appendChild(rectoCase);
+    innerCase.appendChild(versoCase);
+    caseJeu.appendChild(innerCase);        
+    sectionJeu.appendChild(caseJeu);
+}
+
+//déclaration des variables éléments post-création
+const $caseClic = document.querySelectorAll(".inner");
+const $mesCases = document.querySelectorAll(".case");
 
 lancerJeu();
 
@@ -139,7 +139,7 @@ function comparer(){
 function cacherCarte(){
     tableauVerrouille = true;
     console.log("verrouillage tableau");
-    //Timing de 2 seoncdes si les cartes ne sont pas identiques
+    //Timing de 2 secondes si les cartes ne sont pas identiques
     setTimeout( () => {
         console.log('dans le timeout')
         premiereCarte.classList.remove('flip');
@@ -165,7 +165,8 @@ function desactiverCarte(){
 
 
 function melanger(){
-    //pour chaque case de mesCases, mettre un order compris entre 1 et 12
+    //pour chaque case "carte" de mesCases, mettre un order compris entre 1 et 12
+    //copie de la déclaration : const $mesCases = document.querySelectorAll(".case");
     for (let uneCase of $mesCases){
         uneCase.style.order = Math.floor(Math.random() * 12);
     }
@@ -179,12 +180,12 @@ function relancerJeu(){
         maCase.classList.remove("flip")
     }
 
-     reinitialiserChoix();
-     allCartesRetournees = 0;
-     nbCoups = 0;
-     $afficheCoups.textContent = nbCoups;
-     //timeout pour permettre à l'animation de retournement de s'effectuer AVANT de retirer les cartes
-     setTimeout(lancerJeu,1000);
+    reinitialiserChoix();
+    allCartesRetournees = 0;
+    nbCoups = 0;
+    $afficheCoups.textContent = nbCoups;
+    //timeout pour permettre à l'animation de retournement de s'effectuer AVANT de retirer les cartes
+    setTimeout(lancerJeu,1000);
 }
 
 
@@ -197,7 +198,7 @@ function reinitialiserChoix(){
 
 }
 
-//Affichage de la popu de victoire
+//Affichage de la popup de victoire
 function gagner(){
     console.log('win');
     $overlay.style.display = "block"
